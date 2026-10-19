@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Travel Services - Best Travel Agency in Lucknow</title>
+    <style>
+        :root {
+            --primary-blue: #0b4ab3;
+            --sky-blue: #a3c9f8;
+            --accent-orange: #ff6a00;
+            --dark-navy: #051b3b;
+            --light-bg: #f2f7ff;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-navy);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--dark-navy);
+            color: var(--white);
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .top-bar a {
+            color: var(--sky-blue);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Navbar */
+        header {
+            background: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, var(--sky-blue) 0%, var(--primary-blue) 100%);
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: var(--white);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        /* Creating stylized wings using CSS pseudo-elements to echo the DTS logo design */
+        .logo-placeholder::before, .logo-placeholder::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(90deg, var(--accent-orange), var(--primary-blue));
+            height: 4px;
+            width: 15px;
+            top: 50%;
+            margin-top: -2px;
+        }
+        .logo-placeholder::before { left: -12px; border-radius: 2px 0 0 2px; }
+        .logo-placeholder::after { right: -12px; border-radius: 0 2px 2px 0; }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            line-height: 1.2;
+        }
+
+        .brand-text p {
+            font-size: 0.8rem;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-navy);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(5, 27, 59, 0.75), rgba(11, 74, 179, 0.6)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-orange);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 106, 0, 0.4);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            background-color: #e05d00;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h3 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h3::after {
+            content: '';
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent-orange);
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--sky-blue);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--accent-orange);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+
+        .service-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        /* Dynamic Split Section: Form & Info */
+        .booking-contact-section {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .form-container, .info-container {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .info-container {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-navy));
+            color: var(--white);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--dark-navy);
+        }
+
+        .info-container h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--sky-blue);
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+        }
+
+        .contact-item p {
+            font-size: 1.05rem;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+            color: var(--sky-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-navy);
+            color: #bcceff;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid #102e5c;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .top-bar {
+                flex-direction: column;
+                text-align: center;
+                gap: 5px;
+            }
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Contact Bar -->
+    <div class="top-bar">
+        <span>📍 F-1/77, 1st Floor, Kakaramat Market, Nishatganj, Lucknow</span>
+        <span>📞 Call Us: <a href="tel:+919559288854">+91 9559288854</a></span>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="navbar">
+            <a href="#" class="brand-logo">
+                <div class="logo-placeholder">DTS</div>
+                <div class="brand-text">
+                    <h1>Dream Travel Services</h1>
+                    <p>Your Wings to the World</p>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#book">Enquire Now</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Explore the World, Your Way</h2>
+        <p>Premium tour packages, budget flight bookings, and seamless visa assistance handled by Lucknow's trusted travel experts.</p>
+        <a href="#book" class="cta-btn">Plan Your Dream Trip</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="container" id="services">
+        <div class="section-title">
+            <h3>Our Travel Services</h3>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">✈️</div>
+                <h4>Flight Bookings</h4>
+                <p>Domestic and international flight tickets at highly competitive corporate tariffs.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏨</div>
+                <h4>Hotel Reservations</h4>
+                <p>Handpicked accommodations globally ranging from budget stays to luxury resorts.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🗺️</div>
+                <h4>Holiday Packages</h4>
+                <p>Customized domestic itineraries and exotic international honeymoon or family getaways.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛂</div>
+                <h4>Visa & Passport</h4>
+                <p>Hassle-free documentation, legal processing, and fast-track global visa coordination.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Section -->
+    <section class="container" id="book">
+        <div class="section-title">
+            <h3>Get In Touch</h3>
+        </div>
+        <div class="booking-contact-section">
+            <!-- Lead Form -->
+            <div class="form-container">
+                <h4 style="margin-bottom: 20px; color: var(--primary-blue);">Request a Free Quote</h4>
+                <form onsubmit="event.preventDefault(); alert('Thank you for contacting Dream Travel Services! Our team will call you shortly.');">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Mobile Number</label>
+                        <input type="tel" id="phone" required placeholder="Enter your 10-digit number">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Where do you want to go?</label>
+                        <select id="destination">
+                            <option>Goa / Kerala (Domestic)</option>
+                            <option>Himachal / Kashmir (Hill Stations)</option>
+                            <option>Dubai / Thailand / Bali (International)</option>
+                            <option>Europe / Americas (Long Haul)</option>
+                            <option>Flight / Visa Assistance Only</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Enquiry</button>
+                </form>
+            </div>
+
+            <!-- Verified Contact Info Card -->
+            <div class="info-container">
+                <h4>Head Office Details</h4>
+                <div class="contact-item">
+                    <div class="contact-icon">🏢</div>
+                    <div>
+                        <strong>Dream Travel Services</strong>
+                        <p>F-1/77, 1st Floor, Kakaramat Market,<br>Nishatganj, Lucknow - 226006</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <strong>Direct Hotline</strong><br>
+                        <a href="tel:+919559288854">+91 9559288854</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <div>
+                        <strong>Working Hours</strong>
+                        <p>Monday - Saturday: 10:00 AM - 7:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Dream Travel Services. All Rights Reserved. Designed for Excellence.</p>
+    </footer>
+
+</body>
+</html>
